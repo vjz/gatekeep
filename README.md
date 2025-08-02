@@ -1,2 +1,23 @@
-# gatekeep
-GateKeep is a fast, open-source, password-protected command-line tool that blocks and unblocks websites by modifying your system's hosts file. Designed for parents, productivity seekers, and privacy-conscious users, GateKeep lets you easily deny access to distracting or unsafe websites with a single command.
+# GateKeep
+
+**GateKeep** is a lightweight, password-protected CLI tool that blocks and unblocks websites by modifying the hosts file. Ideal for parental controls or focused productivity.
+
+## Build
+
+To build GateKeep for different platforms:
+
+### Windows
+```bash
+GOOS=windows GOARCH=amd64 go build -o gatekeep.exe main.go
+```
+
+### macOS
+```bash
+GOOS=darwin GOARCH=amd64 go build -o gatekeep main.go
+```
+## 🔧 Usage
+
+```bash
+gatekeep block youtube.com reddit.com
+gatekeep unblock tiktok.com
+```
