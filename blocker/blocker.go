@@ -32,10 +32,18 @@ func Block(sites []string) {
 	changed := false
 
 	for _, site := range sites {
-		entry := fmt.Sprintf("%s %s", redirect, site)
-		if !strings.Contains(data, entry) {
-			data += "\n" + entry
-			changed = true
+		// Block both the base domain and www subdomain
+		domains := []string{site}
+		if !strings.HasPrefix(site, "www.") {
+			domains = append(domains, "www."+site)
+		}
+		
+		for _, domain := range domains {
+			entry := fmt.Sprintf("%s %s", redirect, domain)
+			if !strings.Contains(data, entry) {
+				data += "\n" + entry
+				changed = true
+			}
 		}
 	}
 
@@ -65,8 +73,19 @@ func Unblock(sites []string) {
 	for _, line := range lines {
 		shouldSkip := false
 		for _, site := range sites {
-			if strings.Contains(line, site) && strings.Contains(line, redirect) {
-				shouldSkip = true
+			// Check both base domain and www subdomain
+			domains := []string{site}
+			if !strings.HasPrefix(site, "www.") {
+				domains = append(domains, "www."+site)
+			}
+			
+			for _, domain := range domains {
+				if strings.Contains(line, domain) && strings.Contains(line, redirect) {
+					shouldSkip = true
+					break
+				}
+			}
+			if shouldSkip {
 				break
 			}
 		}

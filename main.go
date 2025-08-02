@@ -1,4 +1,16 @@
-fmt.Println(`
+package main
+
+import (
+	"fmt"
+	"os"
+	"strings"
+
+	"gatekeep/auth"
+	"gatekeep/blocker"
+)
+
+func main() {
+	fmt.Println(`
   _____       _       _  __               
  / ____|     | |     (_)/ _|              
 | |  __  __ _| |_ ___ _| |_ ___  ___  ___ 
@@ -7,22 +19,16 @@ fmt.Println(`
  \_____|\__,_|\__\___|_|_| \___/|___/\___|
                GateKeep - Block the Noise
 `)
-package main
-
-import (
-	"fmt"
-	"os"
-	"strings"
-
-	"myblocker/auth"
-	"myblocker/blocker"
-)
-
-func main() {
 	if len(os.Args) < 3 {
 		fmt.Println("Usage:")
-		fmt.Println("  blocker block <site1> <site2> ...")
-		fmt.Println("  blocker unblock <site1> <site2> ...")
+		fmt.Println("  sudo gatekeep block <site1> <site2> ...")
+		fmt.Println("  sudo gatekeep unblock <site1> <site2> ...")
+		fmt.Println("")
+		fmt.Println("Example:")
+		fmt.Println("  sudo gatekeep block youtube.com")
+		fmt.Println("  sudo gatekeep unblock youtube.com")
+		fmt.Println("")
+		fmt.Println("Note: This program requires sudo permissions to modify the hosts file.")
 		return
 	}
 
