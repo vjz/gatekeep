@@ -24,12 +24,14 @@ To build GateKeep for different platforms:
 
 ### Windows
 ```bash
-GOOS=windows GOARCH=amd64 go build -o gatekeep.exe main.go
+mkdir -p bin
+GOOS=windows GOARCH=amd64 go build -o bin/gatekeep.exe main.go
 ```
 
 ### macOS
 ```bash
-GOOS=darwin GOARCH=amd64 go build -o gatekeep main.go
+mkdir -p bin
+GOOS=darwin GOARCH=amd64 go build -o bin/gatekeep main.go
 ```
 ## 🔧 Usage
 
