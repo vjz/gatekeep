@@ -1,6 +1,22 @@
 # GateKeep
 
-**GateKeep** is a lightweight, password-protected CLI tool that blocks and unblocks websites by modifying the hosts file. Ideal for parental controls or focused productivity.
+**GateKeep** is a lightweight CLI tool that blocks and unblocks websites by modifying the hosts file. Ideal for parental controls or focused productivity.
+
+## 🔒 Security Model
+
+GateKeep uses **administrative privileges** as its security mechanism. Since modifying the hosts file requires sudo/admin access, the real security is the admin password itself.
+
+### For Parents
+- **Don't share admin passwords** with children
+- **Keep the admin account separate** from children's user accounts
+- **Use standard user accounts** for children (no sudo access)
+- The admin password becomes the "key" to modify website blocks
+
+This approach is more secure than application-level passwords because:
+- ✅ **System-level protection** - requires admin privileges
+- ✅ **No password to remember** - uses existing admin authentication
+- ✅ **Cannot be bypassed** by simply deleting the app or changing settings
+- ✅ **Cross-application** - blocks sites system-wide, not just in browsers
 
 ## Build
 

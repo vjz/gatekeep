@@ -5,7 +5,6 @@ import (
 	"os"
 	"strings"
 
-	"gatekeep/auth"
 	"gatekeep/blocker"
 )
 
@@ -34,15 +33,6 @@ func main() {
 
 	action := os.Args[1]
 	sites := os.Args[2:]
-
-	fmt.Print("Enter password: ")
-	var pass string
-	fmt.Scanln(&pass)
-
-	if !auth.CheckPassword(pass) {
-		fmt.Println("Incorrect password.")
-		return
-	}
 
 	switch strings.ToLower(action) {
 	case "block":
